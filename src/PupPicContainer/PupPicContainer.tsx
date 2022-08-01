@@ -14,6 +14,7 @@ const ImageContainer = ({ pupPic }: PupPicProps) => {
           m: 1,
           width: 400,
           height: 400,
+          borderRadius: 2.5
         },
       }}
     >

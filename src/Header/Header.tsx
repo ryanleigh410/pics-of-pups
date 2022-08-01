@@ -1,8 +1,10 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  Toolbar,
+  Typography
+} from '@mui/material';
 import PetsIcon from '@mui/icons-material/Pets';
 
 const Header = () => {

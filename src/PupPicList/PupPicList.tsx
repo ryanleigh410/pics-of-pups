@@ -1,34 +1,40 @@
-import React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import Box from '@mui/material/Box';
+import { ImageList, ImageListItem} from '@mui/material';
 
 interface PupPicProps {
   pupPics: string[];
   setPrimaryPupPic: (imageUrl: string) => void;
 }
 
-const imageStyle = {
+const imageListItemStyle = {
   height: '100%'
+}
+
+const imageStyle = {
+  borderRadius: '10px'
 }
 
 function PupPicList({ pupPics, setPrimaryPupPic }: PupPicProps) {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <ImageList sx={{ width: 1000}} cols={5} gap={15} rowHeight={165}>
+
+      <ImageList 
+        sx={{ 
+          mb: 8, 
+          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))!important',
+        }}
+        gap={15}
+      >
         {pupPics.map((image) => (
-          <ImageListItem key={image} style={imageStyle} onClick={() => setPrimaryPupPic(image)}>
+          <ImageListItem key={image} style={imageListItemStyle} onClick={() => setPrimaryPupPic(image)}>
             <img
               src={`${image}`}
               srcSet={`${image}`}
               alt={image}
               loading="lazy"
-              className="PupPicListImage"
+              style={imageStyle}
             />
           </ImageListItem>
         ))}
       </ImageList>
-      </Box>
   );
 }
 
