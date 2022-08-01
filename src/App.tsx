@@ -2,24 +2,32 @@ import React, { useState, useEffect } from 'react';
 import './App.scss';
 import PupPicContainer from './PupPicContainer/PupPicContainer';
 import PupPicList from './PupPicList/PupPicList'; 
+import Header from './Header/Header';
 
 function App()  {
-  let [images, setImages] = useState([]);
+  let [pupPics, setPupPics] = useState([]);
+  let [pupPic, setPupPic] = useState('');
 
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/image/random/10")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
-        
-        setImages(data.message);
+        setPrimaryPupPic(data.message[0]);
+        setPupPics(data.message);
       })
-  }, [])
+  }, []);
+
+  const setPrimaryPupPic = (imageURL: string) => {
+    setPupPic(imageURL);
+  }
 
   return (
     <div className="App">
-      <PupPicContainer />
-      <PupPicList images={images} />
+      <Header />
+      <div className="container">
+        <PupPicContainer pupPic={pupPic}/>
+        <PupPicList pupPics={pupPics} setPrimaryPupPic={setPrimaryPupPic} />
+      </div>
     </div>
   );  
 }

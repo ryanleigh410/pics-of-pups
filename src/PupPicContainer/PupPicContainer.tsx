@@ -1,7 +1,25 @@
-import React from 'react';
+import Box from '@mui/material/Box';
 
-const ImageContainer = () => {
-  return <h1>ImageContainer</h1>;
+
+interface PupPicProps {
+  pupPic: string;
+}
+
+const ImageContainer = ({ pupPic }: PupPicProps) => {
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        '& > :not(style)': {
+          m: 1,
+          width: 400,
+          height: 400,
+        },
+      }}
+    >
+      <img src={pupPic} alt="Picture of Puppy" />
+    </Box>
+  );
 }
 
 export default ImageContainer;
