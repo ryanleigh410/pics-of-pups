@@ -15,7 +15,6 @@ const imageStyle = {
 
 function PupPicList({ pupPics, setPrimaryPupPic }: PupPicProps) {
   return (
-
       <ImageList 
         sx={{ 
           mb: 8, 

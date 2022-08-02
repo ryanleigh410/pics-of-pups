@@ -1,31 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
-import PupPicContainer from './PupPicContainer/PupPicContainer';
-import PupPicList from './PupPicList/PupPicList'; 
+import PupPicList from './PupPicList/PupPicList';
+import PupPicModal from './PupPicModal/PupPicModal';
 import Header from './Header/Header';
+
 
 function App()  {
   let [pupPics, setPupPics] = useState([]);
   let [pupPic, setPupPic] = useState('');
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/image/random/10")
       .then(response => response.json())
       .then(data => {
-        setPrimaryPupPic(data.message[0]);
         setPupPics(data.message);
       })
   }, []);
 
   const setPrimaryPupPic = (imageURL: string) => {
     setPupPic(imageURL);
+    handleOpen();
   }
 
   return (
     <div className="App">
       <Header />
       <div className="container">
-        <PupPicContainer pupPic={pupPic}/>
+        <PupPicModal pupPic={pupPic} open={open} setOpen={setOpen} />
         <PupPicList pupPics={pupPics} setPrimaryPupPic={setPrimaryPupPic} />
       </div>
     </div>
