@@ -3,6 +3,7 @@ import './App.scss';
 import PupPicList from './PupPicList/PupPicList';
 import PupPicModal from './PupPicModal/PupPicModal';
 import Header from './Header/Header';
+import Typography from '@mui/material/Typography';
 
 
 function App()  {
@@ -30,6 +31,12 @@ function App()  {
     <div className="App">
       <Header />
       <div className="container">
+        <Typography variant="h2" component="div">
+          Welcome to the Pics of Pups App!
+        </Typography>
+        <Typography variant="h6" component="div">
+          Click on a pic for a closer view
+        </Typography>
         <PupPicModal pupPic={pupPic} open={open} setOpen={setOpen} />
         <PupPicList pupPics={pupPics} setPrimaryPupPic={setPrimaryPupPic} />
       </div>
